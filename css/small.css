@@ -1,0 +1,89 @@
+:root {
+    --font-body: Arial, Helvetica, sans-serif;
+    --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    /* colors */
+    --primary-color: #22577A;
+    --secondary-color: #38A3A5;
+    --tertiary-color: #57CC99;
+    --light-green: #80ED99;
+    --primary-color2: #13005A;
+    --secondary-color2: #00337C;
+    --tertiary-color2: #1C82AD;
+    --light-green2: #03C988;
+    --dark-grey: #303030;
+  
+    /* sizes */
+    --font-base: 18px;
+    --small-font: 0.8em;
+    --large-font: 1.2em;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .grid {
+    display: grid;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-base);
+    color: var(--dark-grey);
+  }
+  img {
+    max-width: 100%;
+    /* overflow: hidden;
+    overflow-clip-margin:unset; */
+  }
+  html {
+    background-color: var(--secondary-color2);
+    color: white;
+  }
+main {
+    border:#38A3A5 1px solid;
+    color: white;
+}
+  header, footer {
+    display: flex;
+    flex-wrap: wrap;
+
+    background-color: var(--primary-color);
+    color: white;
+
+  }
+
+  .empad {
+    padding: 1em;
+  }
+
+  .h2 {
+    font-size: 1.5rem;
+  }
+  .row {
+    flex-direction: row;
+    
+  }
+.region {
+    flex-direction: row;
+    border: var(--light-green2) 5px solid;
+    padding: 1rem;
+    margin: .2rem;
+}
+  .logo img {
+    width: 10rem;
+    min-width: 5rem;
+  }
+  .footerlogo img {    
+    width: 8rem;
+    min-width: 3rem;
+  }
+  footer img {
+    justify-content: space-evenly;
+  }
+  footer {
+    flex-direction: row;
+    font-size: .9rem;
+    flex-wrap: wrap;
+
+  }

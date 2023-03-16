@@ -1,0 +1,26 @@
+@media (min-width: 45.5em) {
+
+    .region {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .region p {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+     }
+    /* .region {
+        display: block;
+        max-width: rem;
+        height: auto;
+        justify-content: right;
+} */
+    .left {
+        min-width: 50%;
+    }
+    .right {
+        min-width: 50%;
+    }
+
+}
