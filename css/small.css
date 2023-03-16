@@ -45,6 +45,7 @@ main {
     color: white;
 }
   header, footer {
+    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
 
@@ -86,4 +87,14 @@ main {
     font-size: .9rem;
     flex-wrap: wrap;
 
+  }
+
+  .login {
+    height: 1.7rem;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    padding: 1rem 6%;
+    text-decoration: none;
+    color: var(--light-green);
   }
