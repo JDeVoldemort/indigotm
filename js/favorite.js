@@ -1,4 +1,9 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+// Sunday add favorite functionality done
+// monday modify region code to work for region Code final enhancement/
+// Tuesday Add team functionality / peer review 
+// Wednesday lazy loading possiblilities/ styles 
+
 
 
 // add local storage item in on region pages with json to store a fav field
