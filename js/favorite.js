@@ -16,46 +16,54 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 // code to display favs from local storage with on team icon and fav removal icon.
 // possible display alert when added or removed
+export default class favoriteManagment {
+constructor(userName, dataSource) {
+    this.userName = userName;
+    this.currentUser = userName;
+    this.fav = {};
+    this.dataSource = dataSource;
+}
+
 
 addFavorite() {
     let fav_list = [];
     let needsAdded = 1;
     // iflocalstorage `${username}-fav`
-      if (localStorage.getItem("so-cart")) {
-        cart_list = getLocalStorage("so-cart");
-        cart_list.forEach(item => setQuantity.bind(this)(item));;
+      if (localStorage.getItem(`${this.currentUser}-fav`)) {
+        fav_list = getLocalStorage(`${this.currentUser}-fav`);
+        // fav_list.forEach(item => setQuantity.bind(this)(item));;
       }
-      function setQuantity(item) {
-          if(item.Id == this.productId) {
-            needsAdded = 0;
-            if (item.quantity) {
-              item.quantity += 1;
-            }else
-            {
-              item.quantity = 1;
-            }
-          } 
+    //   function setQuantity(item) {
+    //       if(item.Id == this.productId) {
+    //         needsAdded = 0;
+    //         if (item.quantity) {
+    //           item.quantity += 1;
+    //         }else
+    //         {
+    //           item.quantity = 1;
+    //         }
+    //       } 
       
-    }
+    // }
     if (needsAdded == 1) {
-      this.product.quantity = 1;
-      cart_list.push(this.product);
+    //   this.product.quantity = 1;
+      fav_list.push(this.product);
     }
-      setLocalStorage("so-cart", cart_list);
+      setLocalStorage(`${this.currentUser}-fav`, fav_list);
   
       // updates cart totals for superscipt on backpack icon
-      cartTotals();
+    //   cartTotals();
       // Adds shake animation to cart when items are being added to the cart
-      const cartIcon = document.getElementById("cart-icon");
-      cartIcon.classList.add("shake");
+    //   const cartIcon = document.getElementById("cart-icon");
+    //   cartIcon.classList.add("shake");
       // The animation will shake the cart for 0.5seconds
-      setTimeout(function() {
-        // After the animation is done removes the shake class
-        cartIcon.classList.remove("shake");
-      }, 500)
+    //   setTimeout(function() {
+    //     // After the animation is done removes the shake class
+    //     cartIcon.classList.remove("shake");
+    //   }, 500)
         // Show the success message
         const successMessage = document.createElement("div");
-        successMessage.innerHTML = "Item successfully added to cart!";
+        successMessage.innerHTML = "Favorite added to team!";
         successMessage.style.backgroundColor = "green";
         successMessage.style.color = "white";
         successMessage.style.padding = "20px";
@@ -69,3 +77,32 @@ addFavorite() {
           successMessage.remove();
         }, 3000);
   }
+
+  renderRegionDetails(selector) {
+    const element = document.querySelector(selector);
+    // const breadcrumb = document.querySelector(".breadcrumb");
+    // breadcrumb.innerHTML = `
+    //     <a href="/">Home</a> >
+    //     <a href="/region-listing/index.html?region=${this.region}">${this.region.charAt(0).toUpperCase() + this.region.slice(1)}</a> >
+    //     <span>${this.region}</span>
+    // `;
+    element.insertAdjacentHTML(
+      "afterBegin",
+      regionDetailsTemplate(this.region)
+    );
+  }
+//   renderProductDetails(selector) {
+//     const element = document.querySelector(selector);
+//     const breadcrumb = document.querySelector(".breadcrumb");
+//     breadcrumb.innerHTML = `
+//         <a href="/">Home</a> >
+//         <a href="/product-listing/index.html?category=${this.product.Category}">${this.product.Category.charAt(0).toUpperCase() + this.product.Category.slice(1)}</a> >
+//         <span>${this.product.NameWithoutBrand}</span>
+//     `;
+//     element.insertAdjacentHTML(
+//       "afterBegin",
+//       productDetailsTemplate(this.product)
+//     );
+//   }
+
+}
