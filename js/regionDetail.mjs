@@ -12,7 +12,11 @@ export async function insertResults(data) {
     const pokeListElement = document.querySelector(".outputList");
     let pokeList = data.results;
     let imgArray = [];
-
+    let pokeToJson = [];
+    // {
+    //   pokemon: []
+    // };
+  // pokeToJson = JSON.stringify(pokeToJson);
     // const filterLetter = document.querySelector(".sortLetter").value;
     //  pokeList = filteredPokemon(pokeList);
     pokeList.forEach(async(currentItem) => {
@@ -35,8 +39,35 @@ export async function insertResults(data) {
         //   pokeListElement.innerHTML += html;
         // }
     //   } else {
-          // console.log(pokemon);
+      // pokemon.
+        // let pokeToList = JSON.stringify(pokemon);
+
+
+          console.log(pokemon);
         imgArray.push(pokemon.sprites.front_default);
+        let number = pokemon.id;
+        let name = pokemon.name;
+        let sprite = pokemon.sprites.front_default;
+        let types = pokemon.types;
+        let pokeReduceList = {
+          id: number,
+          name: name,
+          sprite: sprite,
+          types: types
+        };
+        // let pokeToList = JSON.stringify(pokeReduceList);
+        if (localStorage.getItem('pokeList')) {
+          pokeToJson = getLocalStorage('pokeList');
+          pokeToJson.push(pokeToList);
+
+        }
+        else {
+          setLocalStorage('pokeList', pokeToList);
+          pokeToJson = getLocalStorage('pokeList');
+
+        }
+
+
         //   📲🤍💚
         let html = `<div><img src='${pokemon.sprites.front_default}' alt='image of ${pokemon.name}'><span class="fav">🤍</span><p class="name">${pokemon.name} Types: ${pokemon.types[0].type.name} `;
         if (pokemon.types[1] != undefined) {
@@ -51,6 +82,11 @@ export async function insertResults(data) {
     // place results in localstorage with $$$$$$$$$$$$$$$$$$
 
     preloadImages(imgArray, true);
+    // console.log(pokeToJson);
+    setLocalStorage('pokeList', pokeToJson);
+    // let pokeJson = JSON.parse(pokeToJson);
+    // console.log(pokeJson);
+
   }
 //   function reset() {
 //     document.querySelector(".outputList").innerHTML = "";
