@@ -55,14 +55,18 @@ export async function insertResults(data) {
           sprite: sprite,
           types: types
         };
-        // let pokeToList = JSON.stringify(pokeReduceList);
+        let pokeToList = JSON.stringify(pokeReduceList);
         if (localStorage.getItem('pokeList')) {
           pokeToJson = getLocalStorage('pokeList');
           pokeToJson.push(pokeToList);
+          // pokeToJson.push(pokeReduceList);
+          console.log(`poketoJson: ${pokeToJson}`);
+          setLocalStorage('pokeList', pokeToJson);
+
 
         }
         else {
-          setLocalStorage('pokeList', pokeToList);
+          setLocalStorage('pokeList', pokeToJson);
           pokeToJson = getLocalStorage('pokeList');
 
         }
