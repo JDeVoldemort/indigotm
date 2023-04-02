@@ -22,8 +22,8 @@ export async function loadTemplate(path) {
     return response;
   }
   export async function loadHeaderFooter() {
-    let header = "../templates/header.html";
-    let footer = "../templates/footer.html";
+    let header = "https://jdevoldemort.github.io/indigotm/templates/header.html";
+    let footer = "https://jdevoldemort.github.io/indigotm/templates/footer.html";
     let hTemplate = await loadTemplate(header);
     let fTemplate = await loadTemplate(footer);
     let headerEl = document.querySelector("#main-header");
