@@ -23,4 +23,8 @@
         min-width: 50%;
     }
 
+    div.regionsec {
+        flex-wrap: wrap;
+    }
+
 }

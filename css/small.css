@@ -162,11 +162,18 @@ nav ul li:active {
      -ms-transform: scale(1.1);
      -o-transform: scale(1.1);
 }
+div.regionsec {
+  flex-wrap: wrap;
+}
 .pokemon {
   background-color: var(--primary-color);
+  text-align: center;
+  width: 162px;
+  padding: 1rem;
 }
 .pokeImg {
   align-self: center;
+
 }
 .name {
 color: var(--light-green2);
