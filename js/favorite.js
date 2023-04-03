@@ -22,10 +22,11 @@ constructor(userName, dataSource) {
     this.currentUser = userName;
     this.fav = {};
     this.dataSource = dataSource;
+    // this.pokemonId = pokemonId;
 }
 
 
-addFavorite() {
+addFavorite(pokemonId) {
     let fav_list = [];
     let needsAdded = 1;
     // iflocalstorage `${username}-fav`
@@ -35,7 +36,7 @@ addFavorite() {
       }
 
     if (needsAdded == 1) {
-      fav_list.push(this.product);
+      fav_list.push(pokemonId);
     }
       setLocalStorage(`${this.currentUser}-fav`, fav_list);
   
@@ -56,18 +57,18 @@ addFavorite() {
         }, 3000);
   }
 
-  renderRegionDetails(selector) {
-    const element = document.querySelector(selector);
-    // const breadcrumb = document.querySelector(".breadcrumb");
-    // breadcrumb.innerHTML = `
-    //     <a href="/">Home</a> >
-    //     <a href="/region-listing/index.html?region=${this.region}">${this.region.charAt(0).toUpperCase() + this.region.slice(1)}</a> >
-    //     <span>${this.region}</span>
-    // `;
-    element.insertAdjacentHTML(
-      "afterBegin",
-      regionDetailsTemplate(this.region)
-    );
-  }
+  // renderRegionDetails(selector) {
+  //   const element = document.querySelector(selector);
+  //   // const breadcrumb = document.querySelector(".breadcrumb");
+  //   // breadcrumb.innerHTML = `
+  //   //     <a href="/">Home</a> >
+  //   //     <a href="/region-listing/index.html?region=${this.region}">${this.region.charAt(0).toUpperCase() + this.region.slice(1)}</a> >
+  //   //     <span>${this.region}</span>
+  //   // `;
+  //   element.insertAdjacentHTML(
+  //     "afterBegin",
+  //     regionDetailsTemplate(this.region)
+  //   );
+  // }
 
 }
