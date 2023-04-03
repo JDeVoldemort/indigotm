@@ -119,7 +119,7 @@ export async function insertResults(data) {
 
 
         //   📲🤍💚
-        let html = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprites.front_default}' alt='image of ${pokemon.name}'><span class="fav">🤍</span> <p class="name">${pokemon.id} ${pokemon.name}</p>`;
+        let html = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprites.front_default}' alt='image of ${pokemon.name}'><span class="fav" id="${pokemon.id}">🤍</span> <p class="name">${pokemon.id} ${pokemon.name}</p>`;
         html += `<p class='types'> Types: ${pokemon.types[0].type.name} `;
 
         if (pokemon.types[1] != undefined) {
