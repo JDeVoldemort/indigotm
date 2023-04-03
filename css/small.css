@@ -163,6 +163,7 @@ nav ul li:active {
      -o-transform: scale(1.1);
 }
 div.regionsec {
+  background-color: var(--primary-color);
   flex-wrap: wrap;
 }
 .pokemon {
@@ -176,6 +177,6 @@ div.regionsec {
 
 }
 .name {
-color: var(--light-green2);
+color: var(--light-green);
 }
 
