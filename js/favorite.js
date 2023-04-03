@@ -33,34 +33,12 @@ addFavorite() {
         fav_list = getLocalStorage(`${this.currentUser}-fav`);
         // fav_list.forEach(item => setQuantity.bind(this)(item));;
       }
-    //   function setQuantity(item) {
-    //       if(item.Id == this.productId) {
-    //         needsAdded = 0;
-    //         if (item.quantity) {
-    //           item.quantity += 1;
-    //         }else
-    //         {
-    //           item.quantity = 1;
-    //         }
-    //       } 
-      
-    // }
+
     if (needsAdded == 1) {
-    //   this.product.quantity = 1;
       fav_list.push(this.product);
     }
       setLocalStorage(`${this.currentUser}-fav`, fav_list);
   
-      // updates cart totals for superscipt on backpack icon
-    //   cartTotals();
-      // Adds shake animation to cart when items are being added to the cart
-    //   const cartIcon = document.getElementById("cart-icon");
-    //   cartIcon.classList.add("shake");
-      // The animation will shake the cart for 0.5seconds
-    //   setTimeout(function() {
-    //     // After the animation is done removes the shake class
-    //     cartIcon.classList.remove("shake");
-    //   }, 500)
         // Show the success message
         const successMessage = document.createElement("div");
         successMessage.innerHTML = "Favorite added to team!";
@@ -91,18 +69,5 @@ addFavorite() {
       regionDetailsTemplate(this.region)
     );
   }
-//   renderProductDetails(selector) {
-//     const element = document.querySelector(selector);
-//     const breadcrumb = document.querySelector(".breadcrumb");
-//     breadcrumb.innerHTML = `
-//         <a href="/">Home</a> >
-//         <a href="/product-listing/index.html?category=${this.product.Category}">${this.product.Category.charAt(0).toUpperCase() + this.product.Category.slice(1)}</a> >
-//         <span>${this.product.NameWithoutBrand}</span>
-//     `;
-//     element.insertAdjacentHTML(
-//       "afterBegin",
-//       productDetailsTemplate(this.product)
-//     );
-//   }
 
 }
