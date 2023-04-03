@@ -80,11 +80,11 @@ export async function insertResults(data) {
     let imgArray = [];
     let pokeToJson = [];
 
-    pokeList.forEach((currentItem) => {
+    pokeList.forEach(async(currentItem) => {
       let url = currentItem.url;
       
 
-      const pokedetails = getPokemon(url);
+      const pokedetails = await getPokemon(url);
       
 
       const pokemon = pokedetails;
