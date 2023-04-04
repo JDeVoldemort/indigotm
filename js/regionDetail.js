@@ -155,12 +155,14 @@ export async function insertResults(data) {
           favoriteAdd(`${pokeReduceList.id}`,`${pokeReduceList.name}`, `${pokeReduceList.sprite}`,`${pokeReduceList.type}`,`${pokeReduceList.type2}`);
           favelement.innerHTML = "💚";
         } 
-        if (favelement.innerHTML = "💚") {
-          // change later based on user in localstage favs
-          favoriteRemove(`${pokemon.id}`);
-          favelement.innerHTML = "🤍";
-        }
       }
+      // favelement.onclick = function(event) {
+      //   if (favelement.innerHTML = "💚") {
+      //     // change later based on user in localstage favs
+      //     favoriteRemove(`${pokemon.id}`);
+      //     favelement.innerHTML = "🤍";
+      //   }
+      // }
       //   favelement.onclick = function(event) {
       //   if (favelement.innerHTML = "🤍") {
       //     favoriteAdd(`${pokemon.id}`);
