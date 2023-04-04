@@ -1,5 +1,9 @@
 import favoriteManagment from "./favorite.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+loadHeaderFooter();
 
 const pokeReducedList2 = "https://jdevoldemort.github.io/indigotm/json/pokeReducedList2.json";
 
-favorite = new favoriteManagment("AshKetchum", ".fav-list", pokeReduceList2);
+let favorite = new favoriteManagment("AshKetchum", ".fav-list", pokeReducedList2);
+
+favorite.init();

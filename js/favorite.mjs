@@ -101,19 +101,20 @@ favoritesTemplate(pokemon) {
  return newFav;
 }
 
-addFavorite(pokemonId) {
+async addFavorite(pokemonId) {
     let fav_list = [];
     let needsAdded = 1;
     // iflocalstorage `${username}-fav`
-      if (localStorage.getItem(`${this.currentUser}-fav`)) {
-        fav_list = getLocalStorage(`${this.currentUser}-fav`);
+      if (localStorage.getItem(`${this.key}`)) {
+        fav_list = getLocalStorage(`${this.key}`);
         // fav_list.forEach(item => setQuantity.bind(this)(item));;
       }
 
-    if (needsAdded == 1) {
+    // if (needsAdded == 1) {
       fav_list.push(pokemonId);
-    }
-      setLocalStorage(`${this.currentUser}-fav`, fav_list);
+      console.log(fav_list);
+    // }
+      setLocalStorage(`${this.key}`, fav_list);
   
         // Show the success message
         // const successMessage = document.createElement("div");
@@ -130,10 +131,28 @@ addFavorite(pokemonId) {
         // setTimeout(() => {
         //   successMessage.remove();
         // }, 3000);
-        return;
+        // return;
   }
 }
   export function favoriteAdd(pokemonId) {
+    let fav_list = [];
+
+    let needsAdded = 1;
+    // iflocalstorage `${username}-fav`
+      // if (localStorage.getItem(`${this.key}`)) {
+      if (localStorage.getItem(`ashKetchum-fav`)) {
+        // fav_list = getLocalStorage(`${this.key}`);
+        fav_list = getLocalStorage(`ashKetchum-fav`);
+        // fav_list.forEach(item => setQuantity.bind(this)(item));;
+      }
+
+    // if (needsAdded == 1) {
+      fav_list.push(pokemonId);
+      console.log(fav_list);
+    // }
+      // setLocalStorage(`${this.key}`, fav_list);
+      setLocalStorage(`ashKetchum-fav`, fav_list);
+  
     
   }
   export function getFavorite(pokemonId) {

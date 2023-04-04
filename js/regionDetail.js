@@ -4,7 +4,7 @@ import { favoriteAdd, getFavorite } from "./favorite.mjs";
 import  favoriteManagment  from "./favorite.mjs";
 // add function to check for fav so on load the heart can be swapped
 let url = 0;
-let addFavorite = favoriteManagment.addFavorite;
+
 // export default class regionDetails {
 //     constructor(username, urlList)
     
@@ -109,7 +109,7 @@ export async function insertResults(data) {
           pokeToJson = getLocalStorage('pokeList');
           pokeToJson.push(pokeToList);
           // pokeToJson.push(pokeReduceList);
-          console.log(`poketoJson: ${pokeToJson}`);
+          // console.log(`poketoJson: ${pokeToJson}`);
           setLocalStorage('pokeList', pokeToJson);
 
 
@@ -132,8 +132,16 @@ export async function insertResults(data) {
         pokeListElement.innerHTML += html;
         // save results to array here with added parameter of fav $$$$$$$$$$$$$$$$$$$$
     //   }
-        document.getElementById(`${pokemon.id}`).addEventListener("click", addFavorite(`${pokemon.id}`));
-        // document.getElementById(`${pokemon.id}`).addEventListener("click", favoriteAdd(`${pokemon.id}`));
+        let favelement = document.getElementById(`${pokemon.id}`);
+        // event listener calling method on click
+        // favelement.addEventListener('click', function(){favoriteManagment.addFavorite(pokemon.id)});
+        // 3rd or fourth attempt to get the event listener to take using the function
+        favelement.onclick = function(event) {
+          favoriteAdd(`${pokemon.id}`);
+        favelement.innerhtml = "💚";
+      }
+      // function call to confirm the function works outside the event listener. for somereason it is double counting each input. 
+        favoriteAdd(`${pokemon.id}`);
         // make a function to get pokemon by id from the pokeReducedList2.json
     });
     // place results in localstorage with $$$$$$$$$$$$$$$$$$
