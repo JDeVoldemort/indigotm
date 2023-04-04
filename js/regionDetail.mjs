@@ -4,6 +4,7 @@ import { favoriteAdd, getFavorite } from "./favorite.mjs";
 import  favoriteManagment  from "./favorite.mjs";
 // add function to check for fav so on load the heart can be swapped
 let url = 0;
+let addFavorite = favoriteManagment.addFavorite;
 // export default class regionDetails {
 //     constructor(username, urlList)
     
@@ -131,7 +132,7 @@ export async function insertResults(data) {
         pokeListElement.innerHTML += html;
         // save results to array here with added parameter of fav $$$$$$$$$$$$$$$$$$$$
     //   }
-        document.getElementById(`${pokemon.id}`).addEventListener("click", favoriteManagment.addFavorite(`${pokemon.id}`));
+        document.getElementById(`${pokemon.id}`).addEventListener("click", addFavorite(`${pokemon.id}`));
         // document.getElementById(`${pokemon.id}`).addEventListener("click", favoriteAdd(`${pokemon.id}`));
         // make a function to get pokemon by id from the pokeReducedList2.json
     });

@@ -17,11 +17,12 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 // code to display favs from local storage with on team icon and fav removal icon.
 // possible display alert when added or removed
 export default class favoriteManagment {
-constructor(userName, dataSource) {
+constructor(userName, parentSelector, dataSource) {
     this.userName = userName;
     this.currentUser = "Ketchum";
     this.key = `${this.currentUser}-fav`;
     this.fav = {};
+    this.parentSelector = parentSelector;
     this.dataSource = dataSource;
     // this.pokemonId = pokemonId;
 }
@@ -129,6 +130,7 @@ addFavorite(pokemonId) {
         // setTimeout(() => {
         //   successMessage.remove();
         // }, 3000);
+        return;
   }
 }
   export function favoriteAdd(pokemonId) {

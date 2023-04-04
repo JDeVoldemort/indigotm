@@ -4,7 +4,7 @@ import { getPokemonList } from "./regionDetail.mjs";
 import favoriteManagment from "./favorite.mjs";
 
 loadHeaderFooter();
-let userName = "Ash Ketchum";
+let userName = "AshKetchum";
 
 const pokeReducedList2 = "https://jdevoldemort.github.io/indigotm/json/pokeReducedList2.json";
 // Kanto region Pokemon list number 1-151
@@ -22,7 +22,7 @@ const urlListHoenn = "https://pokeapi.co/api/v2/pokemon?offset=251&limit=135";
 // Next lookup how to json.parse the reducedList
 const urlListFullTestPull = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=386";
 
-const favManagment = new favoriteManagment(userName, pokeReducedList2);
+const favManagment = new favoriteManagment(userName, ".fav-list", pokeReducedList2);
 
 getPokemonList(urlListTest);
 // getPokemonList(urlListFullTestPull);
