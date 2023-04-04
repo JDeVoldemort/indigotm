@@ -129,7 +129,8 @@ export async function insertResults(data) {
         html += `, ${pokemon.types[1].type.name}`;
         }
         html += `</p></div>`;
-        pokeListElement.innerHTML += html;
+        // pokeListElement.innerHTML += html;
+        pokeListElement.insertAdjacentHTML('beforeend', html);
         // save results to array here with added parameter of fav $$$$$$$$$$$$$$$$$$$$
     //   }
         let favelement = document.getElementById(`${pokemon.id}`);
