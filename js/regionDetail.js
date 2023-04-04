@@ -1,6 +1,6 @@
 import { preloadImages } from "./imageCache.mjs";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import { favoriteAdd, getFavorite } from "./favorite.mjs";
+import { favoriteAdd, getFavorite, favoriteRemove } from "./favorite.mjs";
 import  favoriteManagment  from "./favorite.mjs";
 // add function to check for fav so on load the heart can be swapped
 let url = 0;
@@ -97,13 +97,29 @@ export async function insertResults(data) {
         let number = pokemon.id;
         let name = pokemon.name;
         let sprite = pokemon.sprites.front_default;
-        let types = pokemon.types;
-        let pokeReduceList = {
+        let type = pokemon.types[0].type.name;
+        let pokeReduceList = {};
+        if (pokemon.types[1] != undefined) {
+        let type2 = pokemon.types[1].type.name;
+        pokeReduceList = {
+          pokemonInfo: {
           id: number,
           name: name,
           sprite: sprite,
-          types: types
+          type: type,
+          type2: type2
+          }
         };
+      } else {
+        pokeReduceList = {
+          pokemonInfo: {
+          id: number,
+          name: name,
+          sprite: sprite,
+          type: type
+          }
+        };
+      }
         let pokeToList = JSON.stringify(pokeReduceList);
         if (localStorage.getItem('pokeList')) {
           pokeToJson = getLocalStorage('pokeList');
@@ -138,11 +154,29 @@ export async function insertResults(data) {
         // favelement.addEventListener('click', function(){favoriteManagment.addFavorite(pokemon.id)});
         // 3rd or fourth attempt to get the event listener to take using the function
         favelement.onclick = function(event) {
-          favoriteAdd(`${pokemon.id}`);
-        favelement.innerhtml = "💚";
+        if (favelement.innerHTML = "🤍") {
+          favoriteAdd(`${pokeReduceList.pokemonInfo.id}`,`${pokeReduceList.pokemonInfo.name}`, `${pokeReduceList.pokemonInfo.sprite}`,`${pokeReduceList.pokemonInfo.type}`,`${pokeReduceList.pokemonInfo.type2}`);
+          favelement.innerHTML = "💚";
+        } 
+        if (favelement.innerHTML = "💚") {
+          // change later based on user in localstage favs
+          favoriteRemove(`${pokemon.id}`);
+          favelement.innerHTML = "🤍";
+        }
       }
+      //   favelement.onclick = function(event) {
+      //   if (favelement.innerHTML = "🤍") {
+      //     favoriteAdd(`${pokemon.id}`);
+      //     favelement.innerHTML = "💚";
+      //   } 
+      //   if (favelement.innerHTML = "💚") {
+      //     // change later based on user in localstage favs
+      //     favoriteRemove(`${pokemon.id}`);
+      //     favelement.innerHTML = "🤍";
+      //   }
+      // }
       // function call to confirm the function works outside the event listener. for somereason it is double counting each input. 
-        favoriteAdd(`${pokemon.id}`);
+        // favoriteAdd(`${pokemon.id}`);
         // make a function to get pokemon by id from the pokeReducedList2.json
     });
     // place results in localstorage with $$$$$$$$$$$$$$$$$$

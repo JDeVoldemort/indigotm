@@ -1,4 +1,6 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import ExternalServices from "./externalServices.js";
+import { findProductById } from "./externalServices.js";
 // Sunday add favorite functionality done
 // monday modify region code to work for region Code final enhancement/
 // Tuesday Add team functionality / peer review 
@@ -19,7 +21,7 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 export default class favoriteManagment {
 constructor(userName, parentSelector, dataSource) {
     this.userName = userName;
-    this.currentUser = "Ketchum";
+    this.currentUser = "ashKetchum";
     this.key = `${this.currentUser}-fav`;
     this.fav = {};
     this.parentSelector = parentSelector;
@@ -43,7 +45,7 @@ displayFavorites() {
       // If the fav_list array is empty, add the "hide" class to the cart footer
       // document.getElementById("fav-footer").classList.add("hide");
       // Render the message "You have no favorites selected" on the page
-      document.querySelector(".fav-list").innerHTML = `<p id="empty-list-message">You have no favorites selected!</p>`;
+      document.querySelector(this.parentSelector).innerHTML = `<p id="empty-list-message">You have no favorites selected!</p>`;
       // Return from the function
       return;
     }
@@ -55,7 +57,7 @@ displayFavorites() {
     // Iterate through the cart items and add their final prices to the total
     // fav_list.forEach((item) => (total += ((item.FinalPrice) * (item.quantity))));
     // Render the HTML templates for the cart items on the page
-    document.querySelector(".favorites-list").innerHTML = htmlItems.join("");
+    document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
     // Render the total on the page
     // document.querySelector(".cart-total").innerHTML = `Total: $${total.toFixed(2)}`;
 
@@ -109,9 +111,12 @@ async addFavorite(pokemonId) {
         fav_list = getLocalStorage(`${this.key}`);
         // fav_list.forEach(item => setQuantity.bind(this)(item));;
       }
-
+    //  let pokemonById = getPokemonById(pokemonId);
+    //  console.log(pokemonById);
+    //  let pokemon = pokemonById.results;
     // if (needsAdded == 1) {
       fav_list.push(pokemonId);
+      // fav_list.push(pokemonById);
       console.log(fav_list);
     // }
       setLocalStorage(`${this.key}`, fav_list);
@@ -134,7 +139,66 @@ async addFavorite(pokemonId) {
         // return;
   }
 }
-  export function favoriteAdd(pokemonId) {
+  export function favoriteAdd(pokemonId, pokemonName, pokemonSprite, pokemonTypes) {
+    let fav_list = [];
+    let pokeReduceList = {
+      pokemonInfo: {
+      id: pokemonId,
+      name: pokemonName,
+      sprite: pokemonSprite,
+      types: pokemonTypes
+      }
+    };
+    let needsAdded = 1;
+    // iflocalstorage `${username}-fav`
+      // if (localStorage.getItem(`${this.key}`)) {
+      if (localStorage.getItem(`ashKetchum-fav`)) {
+        // fav_list = getLocalStorage(`${this.key}`);
+        fav_list = getLocalStorage(`ashKetchum-fav`);
+        // fav_list.forEach(item => setQuantity.bind(this)(item));;
+      }
+      // let pokemonById = getFavorite(pokemonId);
+      // console.log(pokemonById);
+      // let pokemon = pokemonById.results.id;
+     // if (needsAdded == 1) {
+       fav_list.push(pokeReduceList);
+      //  fav_list.push(pokemonById);
+    // if (needsAdded == 1) {
+      // fav_list.push(pokemonId);
+      console.log(fav_list);
+    // }
+      // setLocalStorage(`${this.key}`, fav_list);
+      setLocalStorage(`ashKetchum-fav`, fav_list);
+  
+    
+  }
+  // export function favoriteAdd(pokemonId) {
+  //   let fav_list = [];
+
+  //   let needsAdded = 1;
+  //   // iflocalstorage `${username}-fav`
+  //     // if (localStorage.getItem(`${this.key}`)) {
+  //     if (localStorage.getItem(`ashKetchum-fav`)) {
+  //       // fav_list = getLocalStorage(`${this.key}`);
+  //       fav_list = getLocalStorage(`ashKetchum-fav`);
+  //       // fav_list.forEach(item => setQuantity.bind(this)(item));;
+  //     }
+  //     // let pokemonById = getFavorite(pokemonId);
+  //     // console.log(pokemonById);
+  //     // let pokemon = pokemonById.results.id;
+  //    // if (needsAdded == 1) {
+  //      fav_list.push(pokemonId);
+  //     //  fav_list.push(pokemonById);
+  //   // if (needsAdded == 1) {
+  //     // fav_list.push(pokemonId);
+  //     console.log(fav_list);
+  //   // }
+  //     // setLocalStorage(`${this.key}`, fav_list);
+  //     setLocalStorage(`ashKetchum-fav`, fav_list);
+  
+    
+  // }
+  export function favoriteRemove(pokemonId) {
     let fav_list = [];
 
     let needsAdded = 1;
@@ -145,17 +209,26 @@ async addFavorite(pokemonId) {
         fav_list = getLocalStorage(`ashKetchum-fav`);
         // fav_list.forEach(item => setQuantity.bind(this)(item));;
       }
-
+      // let pokemonById = getFavorite(pokemonId);
+      // console.log(pokemonById);
+      // let pokemon = pokemonById.results.id;
+     // if (needsAdded == 1) {
+      //  fav_list.push(pokemonId);
+      //  fav_list.push(pokemonById);
     // if (needsAdded == 1) {
-      fav_list.push(pokemonId);
-      console.log(fav_list);
+      // fav_list.push(pokemonId);
+      // console.log(fav_list);
     // }
       // setLocalStorage(`${this.key}`, fav_list);
       setLocalStorage(`ashKetchum-fav`, fav_list);
   
     
   }
-  export function getFavorite(pokemonId) {
+  export async function getFavorite(pokemonId) {
+    // retrieve from json by id
+    let path = "https://jdevoldemort.github.io/indigotm/json/pokeReducedList2.json";
+    let pokemonById = await findProductById(pokemonId, path);
+    return pokemonById;
     
   }
   // renderRegionDetails(selector) {
