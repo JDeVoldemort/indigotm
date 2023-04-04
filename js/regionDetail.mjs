@@ -1,7 +1,7 @@
 import { preloadImages } from "./imageCache.mjs";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-// import { addFavorite, getfavorite } from "./favorite.js";
-import  favoriteManagment  from "./favorite.js";
+import { favoriteAdd, getFavorite } from "./favorite.mjs";
+import  favoriteManagment  from "./favorite.mjs";
 // add function to check for fav so on load the heart can be swapped
 let url = 0;
 // export default class regionDetails {
@@ -132,6 +132,7 @@ export async function insertResults(data) {
         // save results to array here with added parameter of fav $$$$$$$$$$$$$$$$$$$$
     //   }
         document.getElementById(`${pokemon.id}`).addEventListener("click", favoriteManagment.addFavorite(`${pokemon.id}`));
+        // document.getElementById(`${pokemon.id}`).addEventListener("click", favoriteAdd(`${pokemon.id}`));
         // make a function to get pokemon by id from the pokeReducedList2.json
     });
     // place results in localstorage with $$$$$$$$$$$$$$$$$$

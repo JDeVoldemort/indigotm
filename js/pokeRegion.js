@@ -1,7 +1,7 @@
 import { preloadImages } from "./imageCache.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import { getPokemonList } from "./regionDetail.mjs";
-import favoriteManagment from "./favorite.js";
+import favoriteManagment from "./favorite.mjs";
 
 loadHeaderFooter();
 let userName = "Ash Ketchum";
