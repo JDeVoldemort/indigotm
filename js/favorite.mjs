@@ -92,10 +92,10 @@ displayFavorites() {
 
 favoritesTemplate(pokemon) {
   // HTML template for a single cart item
-let newFav = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprite}' alt='image of ${pokemon.name}'><span class="fav" id="${pokemon.id}">🤍</span> <p class="name">${pokemon.id} ${pokemon.name}</p>`;
+let newFav = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprite}' alt='image of ${pokemon.name}'><span class="fav" id="${pokemon.id}">🤍</span> <span class="team" id="${pokemon.id}">📲</span><p class="name">${pokemon.id} ${pokemon.name}</p>`;
  newFav += `<p class='types'> Types: ${pokemon.type} `;
 
- if (pokemon.type2 != undefined) {
+ if (pokemon.type2 != "undefined") {
  newFav += `, ${pokemon.type2}`;
  }
  newFav += `</p></div>`;
@@ -139,14 +139,17 @@ async addFavorite(pokemonId) {
         // return;
   }
 }
-  export function favoriteAdd(pokemonId, pokemonName, pokemonSprite, pokemonTypes) {
+
+// end class start functions
+
+  export function favoriteAdd(pokemonId, pokemonName, pokemonSprite, pokemonType, pokemonType2) {
     let fav_list = [];
     let pokeReduceList = {
       id: pokemonId,
       name: pokemonName,
       sprite: pokemonSprite,
-      types: pokemonTypes
-
+      type: pokemonType,
+      type2: pokemonType2
     };
     let needsAdded = 1;
     // iflocalstorage `${username}-fav`

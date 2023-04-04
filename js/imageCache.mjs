@@ -10,8 +10,7 @@ export function preloadImages(array, waitForOtherResources, timeout) {
             clearTimeout(timer);
             loadNow();
         });
-        // in case window.addEventListener doesn't get called (sometimes some resource gets stuck)
-        // then preload the images anyway after some timeout time
+
         timer = setTimeout(loadNow, t);
     }
 
@@ -23,8 +22,7 @@ function loadNow() {
                 img.onload = img.onerror = img.onabort = function() {
                     let index = list.indexOf(this);
                     if (index !== -1) {
-                        // remove image from the array once it's loaded
-                        // for memory consumption reasons
+
                         list.splice(index, 1);
                     }
                 }
@@ -34,6 +32,3 @@ function loadNow() {
         }
     }
 }
-
-// preloadImages(["url1.jpg", "url2.jpg", "url3.jpg"], true);
-// preloadImages(["url99.jpg", "url98.jpg"], true);
