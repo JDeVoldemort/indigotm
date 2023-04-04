@@ -92,13 +92,13 @@ displayFavorites() {
 
 favoritesTemplate(pokemon) {
   // HTML template for a single cart item
- const newFav = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprites.front_default}' alt='image of ${pokemon.name}'><span class="fav" id="${pokemon.id}">🤍</span> <p class="name">${pokemon.id} ${pokemon.name}</p>`;
- html += `<p class='types'> Types: ${pokemon.types[0].type.name} `;
+let newFav = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprite}' alt='image of ${pokemon.name}'><span class="fav" id="${pokemon.id}">🤍</span> <p class="name">${pokemon.id} ${pokemon.name}</p>`;
+ newFav += `<p class='types'> Types: ${pokemon.type} `;
 
- if (pokemon.types[1] != undefined) {
- html += `, ${pokemon.types[1].type.name}`;
+ if (pokemon.type2 != undefined) {
+ newFav += `, ${pokemon.type2}`;
  }
- html += `</p></div>`;
+ newFav += `</p></div>`;
 // Return the generated HTML
  return newFav;
 }
@@ -142,12 +142,11 @@ async addFavorite(pokemonId) {
   export function favoriteAdd(pokemonId, pokemonName, pokemonSprite, pokemonTypes) {
     let fav_list = [];
     let pokeReduceList = {
-      pokemonInfo: {
       id: pokemonId,
       name: pokemonName,
       sprite: pokemonSprite,
       types: pokemonTypes
-      }
+
     };
     let needsAdded = 1;
     // iflocalstorage `${username}-fav`

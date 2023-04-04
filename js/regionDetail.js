@@ -102,24 +102,21 @@ export async function insertResults(data) {
         if (pokemon.types[1] != undefined) {
         let type2 = pokemon.types[1].type.name;
         pokeReduceList = {
-          pokemonInfo: {
           id: number,
           name: name,
           sprite: sprite,
           type: type,
           type2: type2
-          }
         };
       } else {
         pokeReduceList = {
-          pokemonInfo: {
           id: number,
           name: name,
           sprite: sprite,
           type: type
           }
         };
-      }
+
         let pokeToList = JSON.stringify(pokeReduceList);
         if (localStorage.getItem('pokeList')) {
           pokeToJson = getLocalStorage('pokeList');
@@ -155,7 +152,7 @@ export async function insertResults(data) {
         // 3rd or fourth attempt to get the event listener to take using the function
         favelement.onclick = function(event) {
         if (favelement.innerHTML = "🤍") {
-          favoriteAdd(`${pokeReduceList.pokemonInfo.id}`,`${pokeReduceList.pokemonInfo.name}`, `${pokeReduceList.pokemonInfo.sprite}`,`${pokeReduceList.pokemonInfo.type}`,`${pokeReduceList.pokemonInfo.type2}`);
+          favoriteAdd(`${pokeReduceList.id}`,`${pokeReduceList.name}`, `${pokeReduceList.sprite}`,`${pokeReduceList.type}`,`${pokeReduceList.type2}`);
           favelement.innerHTML = "💚";
         } 
         if (favelement.innerHTML = "💚") {
