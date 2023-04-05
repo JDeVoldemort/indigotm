@@ -32,7 +32,10 @@ async function geturlList(dataSource) {
         urlListTest: "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0",
         urlListFullTestPull: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=386"
     };
-    return dataSources.dataSource;
+    
+    let selectedDataSource = dataSources[dataSource];
+    console.log(selectedDataSource);
+    return selectedDataSource;
     
 
 }
@@ -45,7 +48,7 @@ let region = getParam("region");
 console.log(region);
 let dataSource = `urlList${region}`;
 console.log(dataSource);
-let selectedDataSource = geturlList(dataSource);
+let selectedDataSource = await geturlList(dataSource);
 console.log(selectedDataSource);
 getPokemonList(selectedDataSource);
 
