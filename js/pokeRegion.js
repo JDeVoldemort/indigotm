@@ -10,13 +10,13 @@ const pokeReducedList2 = "https://jdevoldemort.github.io/indigotm/json/pokeReduc
 // Kanto region Pokemon list number 1-151
 const urlListTest = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0";
 
-const urlListKanto = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
+const urlListkanto = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
 // Johto region Pokemon list number 152-251
 
-const urlListJohto = "https://pokeapi.co/api/v2/pokemon?offset=151&limit=100";
+const urlListjohto = "https://pokeapi.co/api/v2/pokemon?offset=151&limit=100";
 // Hoenn region Pokemon list number 251-386
 
-const urlListHoenn = "https://pokeapi.co/api/v2/pokemon?offset=251&limit=135";
+const urlListhoenn = "https://pokeapi.co/api/v2/pokemon?offset=251&limit=135";
 
 // Pull to create redueced list of data to store in JSON pokeReducedList
 // Next lookup how to json.parse the reducedList
