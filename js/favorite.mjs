@@ -1,6 +1,7 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import ExternalServices from "./externalServices.js";
 import { findProductById } from "./externalServices.js";
+
 // Sunday add favorite functionality done
 // monday modify region code to work for region Code final enhancement/
 // Tuesday Add team functionality / peer review 
@@ -58,41 +59,51 @@ displayFavorites() {
     // fav_list.forEach((item) => (total += ((item.FinalPrice) * (item.quantity))));
     // Render the HTML templates for the cart items on the page
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
-    // Render the total on the page
-    // document.querySelector(".cart-total").innerHTML = `Total: $${total.toFixed(2)}`;
+
 
     // Add an event listener for the "click" event to all the elements with a "data-id" attribute
     // $$$$$$$$ fix here to match html
     document.querySelectorAll(`[data-id]`).forEach((item) => { 
       item.addEventListener(`click`, (event) => { 
         // Call the removeItem method when an element with a "data-id" attribute is clicked
-        this.removeItem(event); 
+        this.favoriteRemove(event); 
       });
     });
-
-    // Add an event listener for the "click" event to all the elements with a "data-id-add" attribute
-    // $$$$ do something similar for add to team
-    // document.querySelectorAll(`[data-id-add]`).forEach((item) => { 
-    //   item.addEventListener(`click`, (event) => { 
-    //     // Call the increase-quantity method when an element with a "data-id" attribute is clicked
-    //     this.increase(event); 
-    //   });
-    // });
-    // Add an event listener for the "click" event to all the elements with a "data-id-min" attribute
-    // $$$$$ do something similar for remove from team
-    // document.querySelectorAll(`[data-id-min]`).forEach((item) => { 
-    //   item.addEventListener(`click`, (event) => { 
-    //     // Call the decrease quantity method when an element with a "data-id-min" attribute is clicked
-    //     this.decrease(event); 
-    //   });
-    // });
+}
 
 }
+favoriteRemove(event) {
+  console.log(event);
+  const pokemonId = event.target.dataset.id;
+  let fav_list = [];
+
+  // iflocalstorage `${username}-fav`
+    // if (localStorage.getItem(`${this.key}`)) {
+    if (localStorage.getItem(`ashKetchum-fav`)) {
+      // fav_list = getLocalStorage(`${this.key}`);
+      fav_list = getLocalStorage(`ashKetchum-fav`);
+      // fav_list.forEach(item => setQuantity.bind(this)(item));;
+      // fav_list.forEach(function(item) {
+      // if (item.id == pokemonId) {
+      //   needsAdded = 0;
+      // }
+      // });
+      for( let i =0; i< fav_list.length; i++){
+      if (fav_list[i].id == pokemonId) {
+        fav_list.splice(i, 1);
+      }
+      };
+    // setLocalStorage(`${this.key}`, fav_list);
+    setLocalStorage(`ashKetchum-fav`, fav_list);
+    this.displayFavorites();
+    }
+
+  
 }
 
 favoritesTemplate(pokemon) {
   // HTML template for a single cart item
-let newFav = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprite}' alt='image of ${pokemon.name}'><span class="fav" id="${pokemon.id}">🤍</span> <span class="team" id="${pokemon.id}">📲</span><p class="name">${pokemon.id} ${pokemon.name}</p>`;
+let newFav = `<div class="pokemon"><img class="pokeImg" src='${pokemon.sprite}' alt='image of ${pokemon.name}'><span class="fav" id="${pokemon.id}" data-id="${pokemon.id}">💚</span> <span class="team" id="${pokemon.id}">📲</span><p class="name">${pokemon.id} ${pokemon.name}</p>`;
  newFav += `<p class='types'> Types: ${pokemon.type} `;
 
  if (pokemon.type2 != "undefined") {
@@ -158,74 +169,57 @@ async addFavorite(pokemonId) {
         // fav_list = getLocalStorage(`${this.key}`);
         fav_list = getLocalStorage(`ashKetchum-fav`);
         // fav_list.forEach(item => setQuantity.bind(this)(item));;
+        fav_list.forEach(function(item) {
+        if (item.id == pokemonId) {
+          needsAdded = 0;
+        }
+        });
       }
       // let pokemonById = getFavorite(pokemonId);
       // console.log(pokemonById);
       // let pokemon = pokemonById.results.id;
-     // if (needsAdded == 1) {
+     if (needsAdded == 1) {
        fav_list.push(pokeReduceList);
-      //  fav_list.push(pokemonById);
+        //  fav_list.push(pokemonById);
+        console.log(fav_list);
+     }
     // if (needsAdded == 1) {
       // fav_list.push(pokemonId);
-      console.log(fav_list);
     // }
       // setLocalStorage(`${this.key}`, fav_list);
       setLocalStorage(`ashKetchum-fav`, fav_list);
   
     
   }
-  // export function favoriteAdd(pokemonId) {
-  //   let fav_list = [];
 
-  //   let needsAdded = 1;
-  //   // iflocalstorage `${username}-fav`
-  //     // if (localStorage.getItem(`${this.key}`)) {
-  //     if (localStorage.getItem(`ashKetchum-fav`)) {
-  //       // fav_list = getLocalStorage(`${this.key}`);
-  //       fav_list = getLocalStorage(`ashKetchum-fav`);
-  //       // fav_list.forEach(item => setQuantity.bind(this)(item));;
-  //     }
-  //     // let pokemonById = getFavorite(pokemonId);
-  //     // console.log(pokemonById);
-  //     // let pokemon = pokemonById.results.id;
-  //    // if (needsAdded == 1) {
-  //      fav_list.push(pokemonId);
-  //     //  fav_list.push(pokemonById);
-  //   // if (needsAdded == 1) {
-  //     // fav_list.push(pokemonId);
-  //     console.log(fav_list);
-  //   // }
-  //     // setLocalStorage(`${this.key}`, fav_list);
-  //     setLocalStorage(`ashKetchum-fav`, fav_list);
-  
-    
-  // }
-  export function favoriteRemove(pokemonId) {
+  export function favoriteRemove(event) {
+    console.log(event);
+    const pokemonId = event.target.dataset.id;
     let fav_list = [];
 
-    let needsAdded = 1;
     // iflocalstorage `${username}-fav`
       // if (localStorage.getItem(`${this.key}`)) {
       if (localStorage.getItem(`ashKetchum-fav`)) {
         // fav_list = getLocalStorage(`${this.key}`);
         fav_list = getLocalStorage(`ashKetchum-fav`);
         // fav_list.forEach(item => setQuantity.bind(this)(item));;
-      }
-      // let pokemonById = getFavorite(pokemonId);
-      // console.log(pokemonById);
-      // let pokemon = pokemonById.results.id;
-     // if (needsAdded == 1) {
-      //  fav_list.push(pokemonId);
-      //  fav_list.push(pokemonById);
-    // if (needsAdded == 1) {
-      // fav_list.push(pokemonId);
-      // console.log(fav_list);
-    // }
+        // fav_list.forEach(function(item) {
+        // if (item.id == pokemonId) {
+        //   needsAdded = 0;
+        // }
+        // });
+        for( let i =0; i< fav_list.length; i++){
+        if (fav_list[i].id == pokemonId) {
+          fav_list.splice(i, 1);
+        }
+        };
       // setLocalStorage(`${this.key}`, fav_list);
       setLocalStorage(`ashKetchum-fav`, fav_list);
+      // this.displayFavorites();
   
     
   }
+}
   export async function getFavorite(pokemonId) {
     // retrieve from json by id
     let path = "https://jdevoldemort.github.io/indigotm/json/pokeReducedList2.json";
