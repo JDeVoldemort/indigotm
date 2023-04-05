@@ -24,6 +24,18 @@ const urlListFullTestPull = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=38
 
 const favManagment = new favoriteManagment(userName, ".fav-list", pokeReducedList2);
 
+async function geturlList(dataSource) {
+    let dataSources = {
+        urlListkanto: "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0",
+        urlListjohto: "https://pokeapi.co/api/v2/pokemon?offset=151&limit=100",
+        urlListhoenn: "https://pokeapi.co/api/v2/pokemon?offset=251&limit=135",
+        urlListTest: "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0",
+        urlListFullTestPull: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=386"
+    };
+    return dataSources.dataSource;
+    
+
+}
 // getPokemonList(urlListTest);
 // getPokemonList(urlListFullTestPull);
 // getPokemonList(urlListKanto);
@@ -33,7 +45,9 @@ let region = getParam("region");
 console.log(region);
 let dataSource = `urlList${region}`;
 console.log(dataSource);
-getPokemonList(dataSource);
+let selectedDataSource = geturlList(dataSource);
+console.log(selectedDataSource);
+getPokemonList(selectedDataSource);
 
 // maybe turn these into an array
 // or read from jsons setup instead
