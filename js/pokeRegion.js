@@ -1,5 +1,5 @@
 import { preloadImages } from "./imageCache.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { getParam, loadHeaderFooter } from "./utils.mjs";
 import { getPokemonList } from "./regionDetail.js";
 import favoriteManagment from "./favorite.mjs";
 
@@ -24,12 +24,16 @@ const urlListFullTestPull = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=38
 
 const favManagment = new favoriteManagment(userName, ".fav-list", pokeReducedList2);
 
-getPokemonList(urlListTest);
+// getPokemonList(urlListTest);
 // getPokemonList(urlListFullTestPull);
 // getPokemonList(urlListKanto);
 // getPokemonList(urlListJohto);
 // getPokemonList(urlListHoenn);
-
+let region = getParam("region");
+console.log(region);
+let dataSource = `urlList${region}`;
+console.log(dataSource);
+getPokemonList(dataSource);
 
 // maybe turn these into an array
 // or read from jsons setup instead
