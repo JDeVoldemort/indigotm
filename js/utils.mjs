@@ -45,3 +45,9 @@ export async function loadTemplate(path) {
         callback(data);
     }
   }
+  export function getParam(param) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const region = urlParams.get(param);
+    return region;
+  }
