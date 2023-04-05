@@ -162,6 +162,44 @@ nav ul li:active {
      -ms-transform: scale(1.1);
      -o-transform: scale(1.1);
 }
+
+/* work on this an other animations later */
+.grow {
+  animation: grow .5s ease-in-out;
+  -webkit-animation: grow .5s ease-in-out;
+}
+  @keyframes grow {
+
+    0% {
+        transform: scale(1);
+    }
+    10% {
+      transform: scale(1.5);
+      -webkit-transform: scale(1.5);
+      -moz-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+      -o-transform: scale(1.5);
+}
+    30% {
+        transform: scale(2.333);
+ 
+}
+40% {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+50% {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+}
+
+}
 div.regionsec {
   background-color: var(--primary-color);
   flex-wrap: wrap;

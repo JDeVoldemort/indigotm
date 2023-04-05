@@ -153,29 +153,14 @@ export async function insertResults(data) {
         favelement.onclick = function(event) {
         if (favelement.innerHTML = "🤍") {
           favoriteAdd(`${pokeReduceList.id}`,`${pokeReduceList.name}`, `${pokeReduceList.sprite}`,`${pokeReduceList.type}`,`${pokeReduceList.type2}`);
-          favelement.innerHTML = "💚";
+          favelement.innerHTML = "💚"
+          favelement.classList.add("grow");
+          setTimeout(function() {
+            favelement.classList.remove("grow");
+          }, 900)
         } 
       }
-      // favelement.onclick = function(event) {
-      //   if (favelement.innerHTML = "💚") {
-      //     // change later based on user in localstage favs
-      //     favoriteRemove(`${pokemon.id}`);
-      //     favelement.innerHTML = "🤍";
-      //   }
-      // }
-      //   favelement.onclick = function(event) {
-      //   if (favelement.innerHTML = "🤍") {
-      //     favoriteAdd(`${pokemon.id}`);
-      //     favelement.innerHTML = "💚";
-      //   } 
-      //   if (favelement.innerHTML = "💚") {
-      //     // change later based on user in localstage favs
-      //     favoriteRemove(`${pokemon.id}`);
-      //     favelement.innerHTML = "🤍";
-      //   }
-      // }
-      // function call to confirm the function works outside the event listener. for somereason it is double counting each input. 
-        // favoriteAdd(`${pokemon.id}`);
+    
         // make a function to get pokemon by id from the pokeReducedList2.json
     });
     // place results in localstorage with $$$$$$$$$$$$$$$$$$
