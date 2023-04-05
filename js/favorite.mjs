@@ -95,6 +95,9 @@ favoriteRemove(event) {
       };
     // setLocalStorage(`${this.key}`, fav_list);
     setLocalStorage(`ashKetchum-fav`, fav_list);
+    // let favelement = event.target;
+    
+    // favelement.innerHTML
     this.displayFavorites();
     }
 
