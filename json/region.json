@@ -18,6 +18,18 @@
       {
         "name": "sinnoh",
         "url": "https://pokeapi.co/api/v2/region/4/"
+      },
+      {
+        "name": "unova",
+        "url": "https://pokeapi.co/api/v2/region/5/"
+      },
+      {
+        "name": "kalos",
+        "url": "https://pokeapi.co/api/v2/region/6/"
+      },
+      {
+        "name": "alola",
+        "url": "https://pokeapi.co/api/v2/region/7/"
       }
     ]
   }

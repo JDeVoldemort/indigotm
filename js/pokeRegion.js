@@ -1,7 +1,6 @@
-import { preloadImages } from "./imageCache.mjs";
-import { getParam, loadHeaderFooter } from "./utils.mjs";
-import { getPokemonList } from "./regionDetail.js";
 import favoriteManagment from "./favorite.mjs";
+import { getPokemonList } from "./regionDetail.js";
+import { getParam, loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 let userName = "AshKetchum";
@@ -29,8 +28,12 @@ async function geturlList(dataSource) {
         urlListkanto: "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0",
         urlListjohto: "https://pokeapi.co/api/v2/pokemon?offset=151&limit=100",
         urlListhoenn: "https://pokeapi.co/api/v2/pokemon?offset=251&limit=135",
+        urlListsinnoh: "https://pokeapi.co/api/v2/pokemon?offset=386&limit=106",
+        urlListunova: "https://pokeapi.co/api/v2/pokemon?offset=493&limit=156",
+        urlListkalos: "https://pokeapi.co/api/v2/pokemon?offset=649&limit=72",
+        urlListalola: "https://pokeapi.co/api/v2/pokemon?offset=721&limit=88",
         urlListTest: "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0",
-        urlListFullTestPull: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=386"
+        urlListFullTestPull: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=492"
     };
     
     let selectedDataSource = dataSources[dataSource];
